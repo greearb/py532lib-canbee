@@ -1,0 +1,64 @@
+### TETSHOUSE ROBOT @ candelatechnologies
+
+### Pin descriptions
+###----------------------------------
+### GPIO<-->Inx
+### 7   <--> In1
+### 8   <--> In2
+### 9   <--> In3
+### 10  <--> In4
+### GND <--> GND
+
+
+
+import time
+
+from gpiozero import Robot, LineSensor
+from signal import pause
+
+# map the GPIO pins to motor driver L298
+bot = Robot(left=(7,8), right=(9,10))
+
+# map the GPIO to read IR sensor
+left_sensor = LineSensor(17)
+right_sensor = LineSensor(27)
+
+
+def navigate(direction, speed):
+    if(direction=="forward"):
+        bot.forward(speed)
+    elif(direction=="left"):
+        bot.left(speed)
+    elif(direction=="right"):
+        bot.right(speed)
+    elif(direction=="stop"):
+        bot.stop()
+
+while(1):
+    left=int(left_sensor.value)
+    right=int(right_sensor.value)
+    if(right==1 and left==1):
+        navigate(direction="forward", speed=0.8)
+    elif(right==0 and left==1):
+        navigate(direction="right",speed=0.4)
+    elif(right==1 and left==0):
+        navigate(direction="left", speed=0.4)
+    else:
+        navigate(direction="stop", speed=0)
+    print(left, right)
+
+
+
+while(1):
+    navigate(direction="forward", speed = 0.2)
+    print("forward")
+    time.sleep(1)
+    navigate(direction="right", speed=0.6)
+    print("right")
+    time.sleep(1)
+    bot.left(0.8)
+    print("left")
+    time.sleep(1)
+    bot.stop()
+    print("stop")
+    time.sleep(1)

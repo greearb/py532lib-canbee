@@ -1,0 +1,12 @@
+{
+    "mode": "Auto",
+    "halt": "Stop",
+    "speed": 80,
+    "direction": "front",
+    "manual_move": "stop",
+    "frequency": 2000,
+    "KP": 25,
+    "KI": 0.5,
+    "KD": 0.001,
+    "Roaming": true
+}

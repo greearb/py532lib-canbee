@@ -1,0 +1,16 @@
+{
+    "bot_status": "Stopped",
+    "Sensor_Output": [
+        0,
+        0,
+        0,
+        0,
+        0
+    ],
+    "NFC_tag": {
+        "card_data": "bytearray(b'K\\x01\\x01\\x00D\\x00\\x07\\x1d\\x91\\xef\\xfa\\x00\\x10\\x80')",
+        "card_len_checksum": 108,
+        "card_frame_type": 0,
+        "Coordinate": 48
+    }
+}
